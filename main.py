@@ -1,25 +1,31 @@
-print("Welcome to the rollercoaster!")
-height = int(input("What is your height in cm? "))
-bill = 0
-if height >= 120:
-    print("You can ride rollercoaster!")
-    age = int(input("What is your age? "))
-    if age < 12:
-        bill = 5
-        print("Child tickets are $5.")
-    elif age <= 18:
-        bill = 7
-        print("Youth tickets are $7.")
-    elif age >= 45 and age <= 65:
-        print("Everything is going to br ok, Have a free ride on us!")
-    else:
-        bill = 12
-        print("Adult tickets are $12.")
+# import random
+# import my_module
 
-    want_photo = input("Do you want a photo taken? Y or N. ")
-    if (want_photo.upper() == "Y"):
-        bill += 3
+# random_integer = random.randint(1, 100)
 
-    print(f"Your final Bill is ${bill}.")
-else:
-    print("Sorry, you have to grow taller before you can ride.")
+# print(random_integer)
+
+# print(my_module.pi)
+
+# random_float = random.random() * 5
+# print(random_float)
+
+# province_of_afghanistan = ["Kabul", "Kandahar", "Mazar", "Herat", "Jalalabad"]
+
+# print(province_of_afghanistan)
+# province_of_afghanistan[1] = "Qandahar"
+# print(province_of_afghanistan)
+
+# province_of_afghanistan.append("Kunar")
+# print(province_of_afghanistan)
+
+# province_of_afghanistan.extend(["Bameyan", "Laghman", "Logar"])
+# print(province_of_afghanistan)
+
+dirty_dozen = ["Strawberries", "Spinach", "Kale", "Nectarines", "Apples", "Grapes", "Peaches", "Cherries", "Pears", "Tomatoes", "Celery", "Potatoes"]
+
+fruits = ["Strawberries", "Nectarines", "Apples", "Grapes", "Peaches", "Cherries", "Pears"]
+vegetables = ["Spinach", "Kale", "Tomatoes", "Celery", "Potatoes"]
+
+dirty_dozen = [fruits, vegetables]
+print(dirty_dozen)
