@@ -1,13 +1,8 @@
-# fruits = ["Apple", "Peach", "Pear"]
-# for fruit in fruits:
-#   print(fruit)
-#   print(fruit + " Pie")
-
-# # For loop with rang function
-# for number in range(1, 11, 3):
-#   print(number)
-
-sum = 0
-for number in range(1, 101):
-  sum += number
-print(sum)
+# Built-in Function
+print("Hello")
+print(len("Hello"))
+# Custom Function
+def my_function():
+  print("Hello")
+  print("Bye")
+my_function()
