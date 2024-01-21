@@ -1,28 +1,55 @@
-# Write your code below this line 👇
-# print("Hello, World!")
-# input("What is your name?")
-# print("Hello, World!\nHello, World!")
-# print("Hello," + " Naseebullah")
-# print("Hello " + input("What is your name?") + "!")
+# # Data Types
+# print("Hello"[4])
+# print("123" + "456")
+# # Integer
+# print(123 + 456)
+# print(123_456_7890)
+# # Float
+# print(3.14159)
+# # Boolean
+# print(True)
+# print(False)
+# num_char = len(input("What is your name? "))
+# print("Your name has " + str(num_char) + " characters.")
 
-# name = input("What is your name?")
-# print(name)
+# a = float(123)
+# print(type(a))
+# print(70 + float("100.5"))
+# print(str(70)+str(100.5))
 
-# name = "Jack"
-# print(name)
-# name = "Angela"
-# print(name)
+# 3 + 5
+# 7 - 4
+# 3 * 2
+# 6 / 2
+# 2 ** 3
 
-# print(len(input("What is your name?")))
-# name = input("What is your name?")
-# length = len(name)
-# print(length)
+# PEMDAS
+# Parentheses -> ()
+# Exponents -> **
+# Multiplication -> * or Division -> /
+# Addition -> + or Subtraction -> -
 
-# name convention
-# n = input("What is your name?")
-# l = len(n)
-# print(l)
+# print(3 * (3 + 3) / 3 - 3)
 
-user_name = input("Wha is your name?")
-length = len(user_name)
-print(length)
+print(8 / 3)
+print(int(8 / 3))
+print(round(8 / 3, 2))
+
+# Floor division
+print(8 // 3)
+# class int
+print(type(8 // 3))
+# class float
+print(type(8 / 3))
+
+result = 16 / 4
+result /= 2
+print(result)
+
+# f-String
+score = 3
+height = 1.8
+isWinning = True
+print("Your score is " + str(score) + ", your height is " + str(height) + ", you are winning " + str(isWinning))
+# or
+print(f"Your score is {score}, your height is {height}, you are winning {isWinning}")
