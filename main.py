@@ -1,45 +1,55 @@
-# Describe Problem
-# def my_function():
-#   for i in range(1, 21):
-#     if i == 20:
-#       print("You got it")
-# my_function()
+import random
+from os import system as clear
+from art import logo, vs
+from game_data import data
 
-# Reproduce the Bug
-# from random import randint
-# dice_imgs = ["❶", "❷", "❸", "❹", "❺", "❻"]
-# dice_num = randint(0, 5)
-# print(dice_num)
-# print(dice_imgs[dice_num])
 
-# Play Computer
-# year = int(input("What's your year of birth?"))
-# if year > 1980 and year <= 1994:
-#   print("You are a millenial.")
-# elif year > 1994:
-#   print("You are a Gen Z.")
+def format_data(account):
+  account_name = account["name"]
+  account_description = account["description"]
+  account_country = account["country"]
+  return f"{account_name}, a {account_description}, from {account_country}."
 
-# Fix the Errors
-# age = int(input("How old are you?"))
-# if age > 18:
-#   print(f"You can drive at age {age}.")
 
-#Print is Your Friend
-# pages = 0
-# word_per_page = 0
-# pages = int(input("Number of pages: "))
-# word_per_page = int(input("Number of words per page: "))
-# print(pages)
-# print(word_per_page)
-# total_words = pages * word_per_page
-# print(total_words)
+def check_answer(guess, account_a_follower_count, account_b_follower_count):
+  if account_a_follower_count > account_b_follower_count:
+    return guess == "a"
+  else:
+    return guess == "b"
 
-#Use a Debugger
-def mutate(a_list):
-  b_list = []
-  for item in a_list:
-    new_item = item * 2
-    b_list.append(new_item)
-  print(b_list)
 
-mutate([1,2,3,5,8,13])
+print(logo)
+
+count = 0
+
+account_a = random.choice(data)
+account_b = random.choice(data)
+
+while True:
+
+  account_a = account_b
+  account_b = random.choice(data)
+
+  while account_a == account_b:
+    account_b = random.choice(data)
+
+  print(f"Compare A: {format_data(account_a)}")
+  print(vs)
+  print(f"Against b: {format_data(account_b)}")
+
+  guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+  account_a_follower_count = account_a["follower_count"]
+  account_b_follower_count = account_b["follower_count"]
+
+  is_correct = check_answer(guess, account_a_follower_count,
+                            account_a_follower_count)
+
+  clear("cls")
+  print(logo)
+
+  if is_correct:
+    count += 1
+    print(f"You're right! Current score: {count}")
+  else:
+    print(f"Sorry, You're wrong, final score: {count}")
+    break
