@@ -1,21 +1,30 @@
-# import another_module
-# print(another_module.another_variable)
-# from turtle import Turtle, Screen
-# timmy = Turtle()
-# print(timmy)
-# timmy.shape("turtle")
-# timmy.color("red", "white")
-# timmy.forward(100)
-# my_screen = Screen()
-# print(my_screen.canvwidth)
-# print(my_screen.canvheight)
-# my_screen.exitonclick()
+class User:
+    def __init__(self, user_id, username):
+        self.id = user_id
+        self.username = username
+        self.followers = 0
+        self.following = 0
+    def follow(self, user):
+        user.followers += 1
+        self.following += 1
 
-from prettytable import PrettyTable
 
-table = PrettyTable()
-table.add_column("Pokemon Name", ["Pikachu", "Squirtle", "Charmander"])
-table.add_column("Type", ["Electric", "Water", "Fire"])
-table.align = "l"
-print(table.align)
-print(table)
+user_1 = User("001", "Naseeb")
+user_2 = User("002", "Omid")
+user_3 = User("003", "Ahmad")
+
+print(user_1.id, user_1.username, user_1.followers, user_1.following)
+user_1.follow(user_2)
+user_1.follow(user_3)
+
+print(user_2.id, user_2.username, user_2.followers, user_2.following)
+user_2.follow(user_1)
+user_2.follow(user_3)
+
+print(user_3.id, user_3.username, user_3.followers, user_3.following)
+user_3.follow(user_1)
+user_3.follow(user_2)
+
+print(user_1.id, user_1.username, user_1.followers, user_1.following)
+print(user_2.id, user_2.username, user_2.followers, user_2.following)
+print(user_3.id, user_3.username, user_3.followers, user_3.following)
