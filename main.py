@@ -1,38 +1,44 @@
-class Animal:
-    def __init__(self):
-        self.num_eyes = 2
+from turtle import Screen
+from paddle import Paddle
+from ball import Ball
+from time import sleep
+from scoreboard import Scoreboard
 
-    def breath(self):
-        print("inhale, exhale")
+screen = Screen()
+screen.title("Pong")
+screen.setup(800, 600)
+screen.bgcolor("black")
+screen.tracer(0)
 
+paddle_r = Paddle(350, 0)
+paddle_l = Paddle(-350, 0)
+ball = Ball()
+scoreboard = Scoreboard()
 
-class Fish(Animal):
-    def __init__(self):
-        super().__init__()
+screen.listen()
+screen.onkey(paddle_r.up, "Up")
+screen.onkey(paddle_r.down, "Down")
+screen.onkey(paddle_l.up, "w")
+screen.onkey(paddle_l.down, "s")
 
-    def breath(self):
-        super().breath()
-        print("Underwater")
+playing = True
+while playing:
+    sleep(ball.move_speed)
+    screen.update()
+    ball.move()
 
-    def swim(self):
-        print("Swimming")
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce_y()
 
+    if ball.distance(paddle_l) < 50 and ball.xcor() < -320 or ball.distance(paddle_r) < 50 and ball.xcor() > 320:
+        ball.bounce_x()
 
-nemo = Fish()
-nemo.swim()
-print(nemo.num_eyes)
-nemo.breath()
+    if ball.xcor() > 380:
+        ball.reset_position()
+        scoreboard.l_point()
 
-list_1 = ["a", "b", "c", "d", "f", "g", "h"]
-tuple_1 = ["do", "re", "mi", "fa", "so", "la", "ti"]
-print(list_1[3:6])
-print(list_1[3:])
-print(list_1[:6])
-print(list_1[::3])
-print(list_1[::-1])
+    if ball.xcor() < -380:
+        ball.reset_position()
+        scoreboard.r_point()
 
-print(tuple_1[3:6])
-print(tuple_1[3:])
-print(tuple_1[:6])
-print(tuple_1[::3])
-print(tuple_1[::-1])
+screen.exitonclick()
