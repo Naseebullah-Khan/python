@@ -1,1 +1,0 @@
-New file is created using open method with the mode of 'W'
