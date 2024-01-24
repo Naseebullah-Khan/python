@@ -1,82 +1,82 @@
-# with open("./weather-data.csv") as file:
-#     data = file.readlines()
-#     print(data)
-# from csv import reader
+# # For Loop
+# numbers = [1, 2, 3]
+# new_list = []
+# for n in numbers:
+#     add_1 = n + 1
+#     new_list.append(add_1)
+# print(new_list)
 #
-# with open("./weather-data.csv") as data_file:
-#     weather_data = reader(data_file)
-#     temperatures = []
-#     for temp in weather_data:
-#         if temp[1] != "temp":
-#             temperatures.append(int(temp[1]))
-#     print(temperatures)
-
-import pandas
-
-# csv_data = pandas.read_csv("./weather-data.csv")
-# print(csv_data)
-# print(csv_data["temp"])
-# print(type(csv_data))
-# print(type(csv_data["temp"]))
-
-# data_dict = csv_data.to_dict()
-# print(data_dict)
-# data_list = csv_data["temp"].to_list()
-# print(data_list)
-# print(len(data_list))
-
-# sum = 0
-# for temp in data_list:
-#     sum += temp
-# average = sum / len(data_list)
-# print(average)
-# # or
-# average = sum(data_list) / len(data_list)
-# print(average)
-# # or
-# print(csv_data["temp"].mean())
-# print(csv_data["temp"].max())
-
-# # Get data in Columns
-# # Treat like a Dictionary
-# print(csv_data['day'])
-# print(csv_data['temp'])
-# print(csv_data['condition'])
-# # Treat like an Object
-# print(csv_data.day)
-# print(csv_data.temp)
-# print(csv_data.condition)
-
-# # Get data in Row
-# print(csv_data[csv_data.day == "Monday"])
-# print(csv_data[csv_data.temp == csv_data["temp"].max()])
-# sunday = csv_data[csv_data.day == "Sunday"]
-# print(sunday.condition)
+# # List Comprehension
+# new_list = [n + 1 for n in numbers]
+# print(new_list)
 #
-# monday = csv_data[csv_data.day == "Monday"]
-# temp = monday.temp * 9/5 + 32
-# print(temp)
+# # String as List
+# name = "Naseebullah Hoshmand"
+# letters_list = [letter for letter in name]
+# print(letters_list)
+#
+# # Range as List
+# range_list = [n * 2 for n in range(1, 5)]
+# print(range_list)
+#
+# # Conditional List Comprehension
+# names = ["Alex", "Beth", "Caroline", "Dave", "Elanor", "Freddie"]
+#
+# short_names = [name for name in names if len(name) < 5]
+# print(short_names)
+#
+# upper_case_names = [name.upper() for name in names if len(name) > 4]
+# print(upper_case_names)
 
-# # Create a Dataframe from Scratch
-# data_dict = {
-#     "students": ["Amy", "Jack", "John"],
-#     "scores": [34, 56, 87],
+# # Dictionary Comprehension
+# import random
+# student_grades = {name: random.randint(1, 100) for name in names}
+# print(student_grades)
+#
+# passed_students = {
+#     student: grade
+#     for (student, grade) in student_grades.items() if grade >= 60
+# }
+# print(passed_students)
+
+# # Exercise
+# weather_c = {
+#     "Monday": 12,
+#     "Tuesday": 14,
+#     "Wednesday": 15,
+#     "Thursday": 14,
+#     "Friday": 21,
+#     "Saturday": 22,
+#     "Sunday": 24,
 # }
 #
-# new_csv_file = pandas.DataFrame(data_dict)
-# print(new_csv_file)
-# new_csv_file.to_csv("new_csv.csv")
-
-data = pandas.read_csv("2018-Central-Park-Squirrel-Census-Squirrel-Data.csv")
-colors = ["Gray", "Cinnamon", "Black"]
-count = []
-for color in colors:
-    color = data[data["Primary Fur Color"] == color]["Primary Fur Color"].count()
-    count.append(color)
-
-data_dict = {
-    "Fur Color": colors,
-    "Count": count,
+# weather_f = {day: (temp*9/5) + 32 for (day, temp) in weather_c.items()}
+#
+# print(weather_f)
+#
+from pandas import DataFrame
+#
+student_dict = {
+    "Students": ["Jack", "John", "Peter"],
+    "Scores": [32, 45, 65],
 }
+#
+# for (key, value) in student_dict.items():
+#     print(key, value)
+#
+df_student_dict = DataFrame(student_dict)
+print(df_student_dict)
+#
+# # Loop through a data frame
+# for (key, value) in df_student_dict.items():
+#     print(key)
+#     print(value)
 
-df = pandas.DataFrame(data_dict).to_csv("Squirrel.csv")
+# # Loop through rows of data frame
+for (index, value) in df_student_dict.iterrows():
+    print(index)
+    print(value)
+    print(value.Students)
+    print(value.Scores)
+    if value.Students == "John":
+        print(value.Scores)
