@@ -1,36 +1,24 @@
-from time import sleep
-from turtle import Screen
-from player import Player
-from car_manager import CarManager
-from scoreboard import Scoreboard
+# file = open("new_file.txt")
+# contents = file.read()
+# print(contents)
+# file.close()
+#
+# or
+#
+# with open("new_file.txt") as file:
+#     contents = file.read()
+#     print(contents)
+#
+with open("./file.txt", mode="w") as file:
+    file.write("New file is created using open method with the mode of 'W'")
 
-screen = Screen()
-screen.setup(width=600, height=600)
-screen.tracer(0)
+with open("./file.txt") as file:
+    contents = file.read()
+    print(contents)
 
-player = Player()
-car_manager = CarManager()
-scoreboard = Scoreboard()
+# with open("new_file.txt", mode="a") as file:
+#     file.write("\nI am currently in my last year of bachelor degree.")
 
-screen.listen()
-screen.onkey(player.move, "Up")
-
-game_is_on = True
-while game_is_on:
-    sleep(0.1)
-    screen.update()
-
-    car_manager.create_car()
-    car_manager.move_to_right()
-
-    for car in car_manager.all_cars:
-        if player.distance(car) < 20:
-            game_is_on = False
-            scoreboard.game_over()
-
-    if player.at_finish_line():
-        player.go_to_start()
-        car_manager.speed_increase()
-        scoreboard.increase_level()
-
-screen.exitonclick()
+# with open("new_file.txt") as file:
+#     contents = file.read()
+#     print(contents)
