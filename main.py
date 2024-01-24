@@ -1,28 +1,36 @@
-# Write your code below this line 👇
-# print("Hello, World!")
-# input("What is your name?")
-# print("Hello, World!\nHello, World!")
-# print("Hello," + " Naseebullah")
-# print("Hello " + input("What is your name?") + "!")
+from time import sleep
+from turtle import Screen
+from player import Player
+from car_manager import CarManager
+from scoreboard import Scoreboard
 
-# name = input("What is your name?")
-# print(name)
+screen = Screen()
+screen.setup(width=600, height=600)
+screen.tracer(0)
 
-# name = "Jack"
-# print(name)
-# name = "Angela"
-# print(name)
+player = Player()
+car_manager = CarManager()
+scoreboard = Scoreboard()
 
-# print(len(input("What is your name?")))
-# name = input("What is your name?")
-# length = len(name)
-# print(length)
+screen.listen()
+screen.onkey(player.move, "Up")
 
-# name convention
-# n = input("What is your name?")
-# l = len(n)
-# print(l)
+game_is_on = True
+while game_is_on:
+    sleep(0.1)
+    screen.update()
 
-user_name = input("Wha is your name?")
-length = len(user_name)
-print(length)
+    car_manager.create_car()
+    car_manager.move_to_right()
+
+    for car in car_manager.all_cars:
+        if player.distance(car) < 20:
+            game_is_on = False
+            scoreboard.game_over()
+
+    if player.at_finish_line():
+        player.go_to_start()
+        car_manager.speed_increase()
+        scoreboard.increase_level()
+
+screen.exitonclick()
